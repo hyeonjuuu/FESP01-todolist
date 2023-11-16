@@ -22,6 +22,7 @@ const TodoInfo = (props: TodoInfoProps) => {
       const response: TodoResponse = await axios.get(
         `http://localhost:33088/api/todolist/${id}`
       );
+      
       if (response.data.ok === 1) {
         item = response.data.item;
         setTitle(item.title);
@@ -34,9 +35,13 @@ const TodoInfo = (props: TodoInfoProps) => {
     }
   };
 
+
+
   useEffect(() => {
     getTodoDetail();
   }, [id]);
+
+  
 
   const handleUpdateButton = async () => {
     setIsUpdate(!isUpdate);
