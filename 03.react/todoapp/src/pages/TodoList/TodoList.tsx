@@ -3,9 +3,7 @@ import { TodoInfo, TodoRegist } from "../_index";
 import axios from "axios";
 
 const TodoList = ({ todoItem, setTodoItem }) => {
-  const [regist, setRegist] = useState(false);
-  const [info, setInfo] = useState(false);
-  
+  const [pageView, setPageView] = useState({});
 
   useEffect(() => {
     initializeTodoList();
@@ -37,21 +35,20 @@ const TodoList = ({ todoItem, setTodoItem }) => {
     }
   };
 
-  // 새로운 글 등록 페이지 토글
-  const toggleRegist = () => {
-    setRegist(!regist);
+  const openTodoRegist = () => {
+    setPageView({ view: "todoRegist" });
   };
 
-  // 새로운 글 등록 페이지 토글
-  const toggleInfo = () => {
-    setInfo(!info);
+  // 
+  const openTodoInfo = (id) => {
+    setPageView({ view: "todoInfo", id: id });
   };
 
   return (
     <div>
       <div className="contents-container">
         <div className="list-container">
-          <button className="regist-button" onClick={toggleRegist}>
+          <button className="regist-button" onClick={openTodoRegist}>
             할 일 추가하기
           </button>
           <ul className="todolist">
@@ -60,7 +57,7 @@ const TodoList = ({ todoItem, setTodoItem }) => {
                 key={item._id}
                 id={item._id}
                 className="todo-item"
-                onClick={toggleInfo}
+                onClick={() => openTodoInfo(item._id)}
               >
                 <input
                   className="checkbox-item"
@@ -77,9 +74,8 @@ const TodoList = ({ todoItem, setTodoItem }) => {
             ))}
           </ul>
         </div>
-        <section></section>
-        {regist && <TodoRegist />}
-        {info && <TodoInfo />}
+        {pageView.view === "todoRegist" && <TodoRegist />}
+        {pageView.view === "todoInfo" && <TodoInfo id={pageView.id} />}
       </div>
     </div>
   );

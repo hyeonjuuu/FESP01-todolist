@@ -36,7 +36,7 @@ const TodoInfo = (props: TodoInfoProps) => {
 
   useEffect(() => {
     getTodoDetail();
-  }, []);
+  }, [id]);
 
   const handleUpdateButton = async () => {
     setIsUpdate(!isUpdate);
