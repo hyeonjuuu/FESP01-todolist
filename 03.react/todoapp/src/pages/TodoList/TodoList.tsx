@@ -5,6 +5,7 @@ import axios from "axios";
 const TodoList = ({ todoItem, setTodoItem }) => {
   const [regist, setRegist] = useState(false);
   const [info, setInfo] = useState(false);
+  
 
   useEffect(() => {
     initializeTodoList();
@@ -16,6 +17,7 @@ const TodoList = ({ todoItem, setTodoItem }) => {
       const response = await axios("http://localhost:33088/api/todolist");
       const { items } = response.data;
       setTodoItem(items);
+      
     } catch (err) {
       console.error(err);
     }

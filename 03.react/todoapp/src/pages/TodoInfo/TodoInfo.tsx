@@ -15,6 +15,7 @@ const TodoInfo = (props: TodoInfoProps) => {
   const [updateTime, setUpdateTime] = useState("");
 
   let item: TodoItem;
+  
 
   const getTodoDetail = async () => {
     try {
@@ -29,7 +30,7 @@ const TodoInfo = (props: TodoInfoProps) => {
         setUpdateTime(item.updatedAt);
       }
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 
@@ -98,7 +99,7 @@ const TodoInfo = (props: TodoInfoProps) => {
           </button>
         </div>
       </div>
-      ;
+      
     </section>
   );
 };
