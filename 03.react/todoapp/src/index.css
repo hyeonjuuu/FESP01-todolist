@@ -42,3 +42,28 @@ ul {
   flex-direction: column;
   flex-wrap: wrap;
 }
+
+.search-bar {
+  height: 80px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  width: 400px;
+  height: 40px;
+  border: 0.8px solid #808080;
+  border-radius: 4px;
+  padding-left: 6px;
+}
+
+.search-button {
+  width: 70px;
+  height: 40px;
+  border-radius: 4px;
+  margin: 10px;
+  border-color: transparent;
+  background-color: #ffcc89;
+  cursor: pointer;
+}

@@ -4,6 +4,7 @@ import axios from "axios";
 
 const TodoList = ({ todoItem, setTodoItem }) => {
   const [pageView, setPageView] = useState({});
+  
 
   useEffect(() => {
     initializeTodoList();
@@ -44,9 +45,33 @@ const TodoList = ({ todoItem, setTodoItem }) => {
     setPageView({ view: "todoInfo", id: id });
   };
 
+  const [searchInput, setSearchInput] = useState("")
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
+  
+    const searchResult = todoItem.filter((item) => {
+      return item.title.includes(searchInput);
+    });
+  
+    
+    console.log(searchResult);
+    
+    
+    // return setTodoItem(searchResult)
+  };
+
+  
+
+
   return (
     <div>
       <div className="contents-container">
+        <div className="search-bar">
+          <input type="text" placeholder="검색어를 입력하세요" className="search" value={searchInput} onChange={handleSearch}  />
+          <button className="search-button" onClick={handleSearch}>검색</button>
+        </div>
         <div className="list-container">
           <button className="regist-button" onClick={openTodoRegist}>
             할 일 추가하기
